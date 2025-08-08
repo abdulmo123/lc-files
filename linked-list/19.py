@@ -16,6 +16,7 @@ class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
+
 class Solution:
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
         
@@ -35,4 +36,35 @@ class Solution:
             else:
                 curr = curr.next
             size-=1
+        return dummy.next
+    
+
+"""
+### ONE-PASS NOTES ###
+    1. dummy node to point to head
+    2. increment head n spaces
+    3. while head --> move both head and curr
+    4. after loop exists curr.next = curr.next.next
+""" 
+
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class Solution:
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        dummy = ListNode(-1, head)
+        curr = dummy
+
+        for x in range(n):
+            head = head.next
+
+        while head:
+            head = head.next
+            curr = curr.next
+        
+        curr.next = curr.next.next
+
         return dummy.next
