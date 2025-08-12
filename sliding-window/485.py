@@ -9,6 +9,8 @@
         b. check to see what the max consec is
 """ 
 
+from typing import List
+
 class Solution:
     def findMaxConsecutiveOnes(self, nums: List[int]) -> int:
         l = max_consec = 0
